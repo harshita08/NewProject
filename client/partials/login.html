@@ -1,0 +1,9 @@
+<div ng-controller="userCtrl as UC">
+	
+	<h2>Bucket Lists</h2>
+	<form ng-submit="UC.addUser()">
+		Name: <input type="text" ng-model="UC.newUser.name">
+		<input type="submit" value="Enter">
+	</form>
+
+</div>

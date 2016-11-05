@@ -1,0 +1,38 @@
+<div ng-controller="itemCtrl as UC">
+	
+	<h4>Bucket List</h4>
+	<h4>Welcome, {{ UC.user.name }}!
+	<a style="padding-left: 300px;" ng-click="UC.logout()">Logout</a>
+	</h4>
+
+	<form ng-submit="UC.addItem()">
+		<p>Title: <input type="text" ng-model="UC.newItem.title"></p>
+		<p>Description: <input type="text" ng-model="UC.newItem.description"></p>
+		<h4>Tag a user:
+			<select ng-model="UC.newItem.user_tagged">
+				<option ng-repeat="user in UC.allUsers">{{ user.name }}</option>
+				
+			</select>
+		</h4>
+		<input type="submit" value="Add to List">
+	</form>
+
+	<div>
+		<h4>Before I die I want to..</h4>
+		<p ng-repeat="item in UC.allItems">
+			<input type="checkbox"  ng-change="UC.updateItem(item._id)" ng-model="UC.item_is[$index]" ng-checked="item.checked_status === true">
+				{{item.created_by}} | 
+				{{item.title}} - 
+				{{item.description}} - 
+				{{item.createdAt}}
+		</p>
+	</div>
+
+	<div>
+		<h4>List of other usesr (Click to view profile):</h4>
+		<p ng-repeat="user in UC.allUsers">
+			<a href="#/user/{{user.name}}">{{ user.name }}</a>
+		</p>
+	</div>
+
+</div>

@@ -1,0 +1,22 @@
+<div ng-controller="listCtrl as BC">
+	<p>
+		<a href="#/dashboard">Home</a>
+		<a ng-click="BC.logout()">Logout</a>
+	</p>
+	<h3>
+		{{ BC.userName }}'s Bucket List
+	</h3>
+
+	<h4>Done</h4>
+	<p ng-repeat="item in BC.items_done">
+		<input type="checkbox" checked>
+		{{item.created_by}} - {{item.title}} - {{item.description}} - {{item.createdAt}}
+	</p>
+
+	<h4>Pending</h4>
+	<p ng-repeat="item in BC.items_pending">
+	<input type="checkbox">
+		{{item.created_by}} - {{item.title}} - {{item.description}} - {{item.createdAt}}
+	</p>
+
+</div>
